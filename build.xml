@@ -1,0 +1,36 @@
+<project default="compile">
+	
+    <property name="product.version" value="1.0.1"/>
+    <property name="src.dir" value="${basedir}/src"/>
+    <property name="classes.dir" value="${basedir}/classes"/>
+    <property name="jar.name" value="jaxb4gwt-${product.version}.jar" />
+	
+	<property environment="env"/>
+	<path id="base.path">
+	      <fileset dir="war/WEB-INF/lib">
+	        <include name="**/*.jar"/>
+	      </fileset>
+		<fileset dir="${env.gwt.home}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="compile">
+		<delete dir="${classes.dir}" failonerror="false" />
+		<delete file="${jar.name}" failonerror="false" />
+		<mkdir dir="${classes.dir}" />
+
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" includes="**/*.java" >
+			<classpath refid="base.path"/>
+		</javac>
+
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}"/>
+		</copy>
+
+		<jar destfile="${jar.name}">
+			<fileset dir="${classes.dir}" />
+		</jar>
+	</target>
+	
+</project>
