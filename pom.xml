@@ -41,29 +41,5 @@
 		</dependency>
 
 	</dependencies>
-	<build>
-		<finalName>jaxb4gwt</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>gwt-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>generateAsync</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<runTarget>com.peterfranza.autobot.gwt.client.ControlPanel/index.html</runTarget>
-					<draftCompile>false</draftCompile>
-					<optimizationLevel>1</optimizationLevel>
-				</configuration>
-			</plugin>
 
-			
-			
-		</plugins>
-	</build>
 </project>
